@@ -15,4 +15,5 @@
 - [ ] Decidir o tema da página (Gestantes vs. Trinca-Ferro) — textos e imagens estão misturados
 - [x] Substituir o mockup do topo pela VSL (vídeo Wistia)
 - [x] Adicionar pixel e captura de UTMs da UTMify
+- [x] Garantir responsividade em celular, tablet e desktop para publicação no Netlify
 - [x] Aplicar desconto comparativo ao plano básico e imagem enviada ao plano premium

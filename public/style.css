@@ -38,9 +38,11 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
+  overflow-x: clip;
 }
 
-img { max-width: 100%; display: block; }
+img, video, iframe, wistia-player { max-width: 100%; }
+img { display: block; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-title);
@@ -199,6 +201,10 @@ wistia-player[media-id='1pnbax76zm']:not(:defined) {
   text-decoration: none;
   box-shadow: 0 14px 30px rgba(238, 120, 151, 0.28);
   transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  max-width: 100%;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 .btn-cta:hover { transform: translateY(-2px); filter: brightness(1.04); }
 .btn-cta:active { transform: translateY(0); }
@@ -269,7 +275,7 @@ wistia-player[media-id='1pnbax76zm']:not(:defined) {
 .curriculum-container { max-width: 940px; margin: 0 auto; text-align: left; }
 .curriculum-tabs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -301,7 +307,7 @@ wistia-player[media-id='1pnbax76zm']:not(:defined) {
   padding: 7px 9px;
 }
 .curriculum-tab-btn.active .tab-level { background: var(--brand); color: var(--text-dark); }
-.tab-info { display: flex; flex-direction: column; }
+.tab-info { display: flex; min-width: 0; flex-direction: column; }
 .tab-title { font-weight: 800; color: var(--text-dark); font-size: 0.9rem; }
 .tab-count { font-size: 0.75rem; color: var(--text-light); font-weight: 600; }
 
@@ -511,6 +517,15 @@ wistia-player[media-id='1pnbax76zm']:not(:defined) {
 }
 .faq-content p { margin: 0; padding: 0 18px 16px; font-size: 0.92rem; }
 
+.checkout-security-badge {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+.checkout-security-badge svg { flex: 0 0 auto; margin-top: 2px; }
+
 /* ---------- Final CTA ---------- */
 .final-cta-card {
   max-width: 560px;
@@ -619,11 +634,43 @@ wistia-player[media-id='1pnbax76zm']:not(:defined) {
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .curriculum-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 640px) {
-  .section { padding: 56px 0; }
+  .container { padding-inline: 16px; }
+  .section { padding: 48px 0; }
+  .hero { padding: 34px 0 48px; }
+  .promo-banner { padding: 9px 12px; font-size: 12px; line-height: 1.4; }
+  .hero-social-proof { max-width: 100%; gap: 7px; padding-inline: 11px; font-size: 11px; }
+  .stars { letter-spacing: 1px; }
+  .hero-title { font-size: 2rem; letter-spacing: 0; overflow-wrap: anywhere; }
+  .hero-subtitle { font-size: 0.96rem; }
+  .section-title { font-size: 1.7rem; letter-spacing: 0; overflow-wrap: anywhere; }
+  .section-subtitle { margin-bottom: 30px; font-size: 0.94rem; }
+  .btn-cta { width: 100%; padding: 16px 18px; font-size: 0.98rem; }
   .carousel-slide { width: 210px; }
   .testimonial-image-wrapper img { height: 320px; max-width: 78vw; }
-  .footer-bottom { justify-content: center; }
+  .preview-carousel, .testimonials-carousel { margin-inline: -16px; }
+  .curriculum-tabs { grid-template-columns: 1fr; }
+  .curriculum-tab-btn { min-width: 0; min-height: 64px; }
+  .curriculum-panes { padding: 16px; }
+  .curriculum-details-grid { grid-template-columns: minmax(0, 1fr); }
+  .curriculum-pane-meta { align-items: flex-start; flex-direction: column; }
+  .pane-badge { max-width: 100%; border-radius: 8px; overflow-wrap: anywhere; }
+  .audience-grid, .bonuses-container, .delivery-steps { grid-template-columns: minmax(0, 1fr); }
+  .value-stack-container { border-radius: 16px; padding: 36px 16px 22px !important; }
+  .value-stack-item-row { display: grid !important; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; text-align: left; }
+  .value-stack-item-row .name { min-width: 0; }
+  .value-stack-item-row .price { white-space: nowrap; }
+  .warranty-card, .final-cta-card { border-radius: 16px; padding: 26px 18px; }
+  .delivery-step[style*="display: flex"] { flex-direction: column; align-items: center !important; padding: 22px 18px !important; }
+  .delivery-step[style*="display: flex"] > div { text-align: center !important; }
+  .faq-trigger { padding: 15px 14px; font-size: 0.9rem; }
+  .faq-icon { flex: 0 0 auto; }
+  .footer-bottom { flex-direction: column; justify-content: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
   .purchase-toast { left: 10px; right: 10px; max-width: none; }
 }
 
@@ -700,8 +747,21 @@ wistia-player[media-id='1pnbax76zm']:not(:defined) {
 }
 
 @media (max-width: 520px) {
-  .offer-ribbon { font-size: 0.68rem; padding: 8px 12px; }
-  .offer-price { font-size: 3.4rem !important; }
+  .offer-ribbon { width: calc(100% - 24px); white-space: normal; font-size: 0.67rem; line-height: 1.25; padding: 8px 10px; }
+  .offer-price { font-size: 3rem !important; letter-spacing: 0 !important; }
+  .hero-student-proof { flex-direction: column; gap: 8px; }
+  .checkout-security-badge { font-size: 0.72rem !important; }
+  .purchase-toast { padding-right: 30px; }
+}
+
+@media (max-width: 380px) {
+  .container { padding-inline: 12px; }
+  .hero-title { font-size: 1.78rem; }
+  .section-title { font-size: 1.5rem; }
+  .value-stack-container { padding-inline: 12px !important; }
+  .value-stack-item-row { font-size: 0.8rem !important; }
+  .offer-price { font-size: 2.65rem !important; }
+  .testimonial-image-wrapper img { max-width: 84vw; }
 }
 
 /* Gestação em Movimento — ajustes visuais sem alterar a estrutura */
