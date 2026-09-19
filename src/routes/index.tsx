@@ -96,17 +96,17 @@ const afterHtml = rewriteAssets(rawBody.slice(splitIndex + (match?.[0].length ??
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "150 Guias de Canto para Trinca-Ferro" },
+      { title: "150 Exercícios Adaptados para Gestantes | Gestação em Movimento" },
       {
         name: "description",
         content:
-          "Organize o manejo, o treino e a preparação do canto do seu trinca-ferro com 150 guias digitais práticos.",
+          "Exercícios leves e progressivos para gestantes sedentárias criarem uma rotina de movimento em casa, com orientação profissional.",
       },
-      { property: "og:title", content: "150 Guias de Canto para Trinca-Ferro" },
+      { property: "og:title", content: "150 Exercícios Adaptados para Gestantes" },
       {
         property: "og:description",
         content:
-          "Guias digitais para criadores organizarem manejo, treino e preparação para rodas e torneios. Acesso vitalício.",
+          "Movimentos leves e explicados passo a passo para gestantes começarem em casa com segurança e no próprio ritmo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -205,8 +205,8 @@ function Index() {
             Veja como o material é por dentro
           </h2>
           <p className="section-subtitle">
-            Guias digitais organizados por tema para facilitar o manejo, o treino e a evolução do
-            canto do seu trinca-ferro. Arraste para explorar.
+            Exercícios organizados por objetivo e fase da gestação para você praticar com mais
+            clareza e confiança. Arraste para explorar.
           </p>
 
           <CoverflowCarousel
