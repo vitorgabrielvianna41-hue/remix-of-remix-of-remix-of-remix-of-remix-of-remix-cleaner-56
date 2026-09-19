@@ -9,7 +9,7 @@
 - [x] Adicionar plano essencial de R$ 10 sem bônus, mais discreto
 - [x] Trocar as imagens da prévia pelos cinco exercícios enviados
 - [x] Deixar os previews quadrados e atualizar a paleta para rosa, verde e branco
-- [ ] Adicionar link de checkout real ao plano de R$ 10 (botão atualmente sem destino)
+- [x] Adicionar link de checkout real ao plano de R$ 10 (botão atualmente sem destino)
 - [x] Trocar os depoimentos pelas conversas enviadas e deixar só as fotos, sem cards
 - [x] Trocar as cinco fotos dos bônus e adicionar a foto da Dra. Camila Rodrigues
 - [ ] Decidir o tema da página (Gestantes vs. Trinca-Ferro) — textos e imagens estão misturados
