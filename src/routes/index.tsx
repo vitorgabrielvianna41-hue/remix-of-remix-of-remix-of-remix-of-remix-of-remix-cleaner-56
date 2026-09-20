@@ -3,52 +3,32 @@ import { useEffect, useRef } from "react";
 
 import landingHtml from "../../public/mapa.html?raw";
 import { CoverflowCarousel } from "@/components/ui/coverflow-carousel";
-import mockupAsset from "@/assets/mockup-pack-trinca-ferro.png.asset.json";
-import mapa1Asset from "@/assets/preview-gestante-01.png.asset.json";
-import mapa2Asset from "@/assets/preview-gestante-02.png.asset.json";
-import mapa3Asset from "@/assets/preview-gestante-03.png.asset.json";
-import mapa4Asset from "@/assets/preview-gestante-04.png.asset.json";
-import mapa5Asset from "@/assets/preview-gestante-05.png.asset.json";
-import depoimento1Asset from "@/assets/depoimento-conversa-01.png.asset.json";
-import depoimento2Asset from "@/assets/depoimento-conversa-02.png.asset.json";
-import depoimento3Asset from "@/assets/depoimento-conversa-03.png.asset.json";
-import depoimento4Asset from "@/assets/depoimento-conversa-04.png.asset.json";
-import avatarLucas from "@/assets/avatar-mulher-1.jpg.asset.json";
-import avatarRafael from "@/assets/avatar-mulher-2.jpg.asset.json";
-import avatarMarcos from "@/assets/avatar-mulher-3.jpg.asset.json";
-import avatarAndre from "@/assets/avatar-mulher-4.jpg.asset.json";
-import bonus1Asset from "@/assets/bonus-alongamentos.png.asset.json";
-import bonus2Asset from "@/assets/bonus-rotina-semanal.png.asset.json";
-import bonus3Asset from "@/assets/bonus-planner-gestante.png.asset.json";
-import bonus4Asset from "@/assets/bonus-terceiro-trimestre.png.asset.json";
-import bonus5Asset from "@/assets/bonus-fichas-acompanhamento.png.asset.json";
-import draCamilaAsset from "@/assets/dra-camila-rodrigues.png.asset.json";
-import premiumPlanAsset from "@/assets/plano-premium.png.asset.json";
 
-const kitMockup = mockupAsset.url;
-const mapa1 = mapa1Asset.url;
-const mapa2 = mapa2Asset.url;
-const mapa3 = mapa3Asset.url;
-const mapa4 = mapa4Asset.url;
-const mapa5 = mapa5Asset.url;
-const depoimento1 = depoimento1Asset.url;
-const depoimento2 = depoimento2Asset.url;
-const depoimento3 = depoimento3Asset.url;
-const depoimento4 = depoimento4Asset.url;
-const bonus1 = bonus1Asset.url;
-const bonus2 = bonus2Asset.url;
-const bonus3 = bonus3Asset.url;
-const bonus4 = bonus4Asset.url;
-const bonus5 = bonus5Asset.url;
+const siteImage = (name: string) => `/site-images/${name}`;
+const kitMockup = siteImage("plano-premium.png");
+const mapa1 = siteImage("preview-gestante-01.png");
+const mapa2 = siteImage("preview-gestante-02.png");
+const mapa3 = siteImage("preview-gestante-03.png");
+const mapa4 = siteImage("preview-gestante-04.png");
+const mapa5 = siteImage("preview-gestante-05.png");
+const depoimento1 = siteImage("depoimento-conversa-01.png");
+const depoimento2 = siteImage("depoimento-conversa-02.png");
+const depoimento3 = siteImage("depoimento-conversa-03.png");
+const depoimento4 = siteImage("depoimento-conversa-04.png");
+const bonus1 = siteImage("bonus-alongamentos.png");
+const bonus2 = siteImage("bonus-rotina-semanal.png");
+const bonus3 = siteImage("bonus-planner-gestante.png");
+const bonus4 = siteImage("bonus-terceiro-trimestre.png");
+const bonus5 = siteImage("bonus-fichas-acompanhamento.png");
 
 const mapas = [mapa1, mapa2, mapa3, mapa4, mapa5];
 const bonusImgs = [bonus1, bonus2, bonus3, bonus4, bonus5];
 
 const depoimentos: Record<string, { produto: string; avatar: string }> = {
-  lucas: { produto: depoimento1, avatar: avatarLucas.url },
-  rafael: { produto: depoimento2, avatar: avatarRafael.url },
-  marcos: { produto: depoimento3, avatar: avatarMarcos.url },
-  andre: { produto: depoimento4, avatar: avatarAndre.url },
+  lucas: { produto: depoimento1, avatar: siteImage("avatar-mulher-1.jpg") },
+  rafael: { produto: depoimento2, avatar: siteImage("avatar-mulher-2.jpg") },
+  marcos: { produto: depoimento3, avatar: siteImage("avatar-mulher-3.jpg") },
+  andre: { produto: depoimento4, avatar: siteImage("avatar-mulher-4.jpg") },
 };
 
 const slides = [
@@ -62,10 +42,10 @@ const slides = [
 function rewriteAssets(html: string) {
   return html
     .replace(/\/assets\/kit_mockup_v2\.webp/g, kitMockup)
-    .replace(/\/assets\/plano-premium-upload\.png/g, premiumPlanAsset.url)
+    .replace(/\/assets\/plano-premium-upload\.png/g, siteImage("plano-premium.png"))
     .replace(/\/assets\/mapa_preview_(\d)\.webp/g, (_m, n) => mapas[(Number(n) - 1) % mapas.length] ?? mapa1)
     .replace(/\/assets\/bonus_(\d)\.webp/g, (_m, n) => bonusImgs[(Number(n) - 1) % bonusImgs.length] ?? bonus1)
-    .replace(/\/assets\/dra_camila_rodrigues\.webp/g, draCamilaAsset.url)
+    .replace(/\/assets\/dra_camila_rodrigues\.webp/g, siteImage("dra-camila-rodrigues.png"))
     .replace(
       /\/assets\/depoimento_(\w+)_produto\.webp/g,
       (_m, name: string) => depoimentos[name]?.produto ?? depoimento1,
