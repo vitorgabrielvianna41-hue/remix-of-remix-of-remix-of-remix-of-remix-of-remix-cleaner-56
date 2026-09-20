@@ -17,3 +17,4 @@
 - [x] Adicionar pixel e captura de UTMs da UTMify
 - [x] Garantir responsividade em celular, tablet e desktop para publicação no Netlify
 - [x] Aplicar desconto comparativo ao plano básico e imagem enviada ao plano premium
+- [x] Corrigir a pasta de publicação do Netlify e manter as imagens hospedadas no site
